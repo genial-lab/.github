@@ -16,6 +16,7 @@ Open-science discipline is public-by-default :
 - Bit-exact reproducibility contract **R1** : every experimental claim resolves to a deterministic `run_id` keyed on `(c_version, profile, seed, commit_sha, benchmark_version)`.
 - Dual-axis versioning (**DualVer**) : the formal-consistency axis (FC) and the empirical-consistency axis (EC) bump independently.
 - No AI co-authorship trailer. Byline credits *project contributors* ; individual authors are credited in §Acknowledgments per publication.
+- **Internal critical-validation before external review.** Every pre-registered finding passes through null-model controls, bootstrap confidence intervals, and multi-estimator robustness checks before publication. 2026-04-21 proof-of-concept: the `bouba_sens` v0.3 findings were **retracted by the lab** (v0.5.0, ADR-0006) when Sprint 7-8 critical tests downgraded all three to null results. See `bouba_sens/papers/paper1/main.md` for the methodology write-up.
 
 ---
 
