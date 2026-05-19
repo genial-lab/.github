@@ -45,9 +45,39 @@ Tonight's snapshot of the three active repos :
 
 | Repo | HEAD | Commits | Version | Headline |
 |---|---|---|---|---|
-| `nerve-wml` (master) | `7528ada` | 295 | **v1.8.1** | GTM tied-stable on N=2 / N=16 / cross-task ; 4 scaling pre-regs locked (ImageNet, Procgen, I-JEPA, Atari) |
-| `dream-of-kiki` (main) | `15efb95` | 479 | **v0.10.0** | Paper 1 v0.2 §5.8 honest per-substrate FP framing ; Conformance Criterion C → **C+** |
+| `nerve-wml` (master) | `e720d5f` | 295+ | **v1.8.1** | GTM tied-stable on N=2 / N=16 / cross-task ; 4 scaling pre-regs locked (ImageNet, Procgen, I-JEPA, Atari) |
+| `dream-of-kiki` (main) | `3260355` | 479+ | **v0.10.0** | Paper 1 v0.2 §5.8 honest per-substrate FP framing ; Conformance Criterion C → **C+** |
 | `bouba_sens` (main) | `3fbeee7` | 156 | **v0.5.9** | §5.5 FINAL Retract (ADR-0019) ; TMLR BLOCKED ; N12 sweep running |
+
+---
+
+## 2026-05-19 portfolio update — related-work consolidation + (i)+(ii) biophysical framing
+
+**Related-work consolidation across Paper 1** (both `nerve-wml` and `dream-of-kiki`).
+Four PRs closed in a single session. On the `nerve-wml` side, §Related Work grew from 5 to 6 threads with a new "Adjacent abstraction layers" thread positioning nerve-wml against NIR (model IR) and AER (transport) ; the GTM rationale was re-grounded on Bastos 2020 predictive routing + Friston 2025 + Ruffini 2025 laminar Comparator ; Liu et al. 2024 HNN review was cited in the "Surrogate-gradient SNN" thread to anchor nerve-wml in the *weak-coupling* corner. On the `dream-of-kiki` side, Paper 1 §8.4 "Comparison with prior art" gained 4 new rows (DVNC, NIR, AER, Liu 2024 HNN) and a closing paragraph engaging the two 2026 PRH critiques (`platoscave2026`, `aristotelianprh2026`) ; DR-3 substrate-agnosticism is anchored to the *local* form of PRH the 2026 evidence supports.
+
+**The (i)+(ii) biophysical framing** is the architectural decision of the session.
+(i) `BioFieldWML` is ONE conformant substrate alongside MLX, LIF, and Transformer — DR-3 substrate-agnosticism is preserved as a universal quantifier, not weakened. (ii) A new biophysical sub-theory (`docs/specs/2026-05-20-biophysical-stratification.md`, 280 lines) stratifies a *family* of bio-grounded substrates across 5 strata (coupled-field, theta-gamma, multimodal efficient+predictive, embodied grounding, critical dynamics) — a scaffold beside framework-C, not a revision of axioms DR-0..DR-4 / N-1..N-5 / W-1..W-4. PRs #15 and #19 cross-reference each other and both carry an explicit non-revision contract.
+
+| Repo | New artefact | PR |
+|---|---|---|
+| `nerve-wml` | Paper 1 §Related Work expanded (6 threads) ; GTM re-grounded on Bastos 2020 / Friston 2025 / Ruffini 2025 ; HNN weak-coupling positioning (Liu 2024) ; §Information Transmission Test gains "Global vs Local alignment" para engaging 2026 PRH critiques | #14 |
+| `nerve-wml` | `BioFieldWML` plan versioned (4th conformant substrate alongside MLX/LIF/Transformer) + deep-research integration 2026-05-19 : Tomé 2024 STDP triplet, Pignatelli 2025 IE plasticity, Palacios 2024 SNN-PC variational message passing, Bellitto 2024 internal wake/sleep scheduler, Tucker-Friston 2025 E/I balance | #15 |
+| `dream-of-kiki` | Paper 1 §8.4 gains 4 prior-art rows (DVNC, NIR, AER, Liu 2024 HNN) + 2026 PRH critique paragraph (DR-3 anchored to local form of PRH) | #18 |
+| `dream-of-kiki` | NEW `docs/specs/2026-05-20-biophysical-stratification.md` — (i)+(ii) sub-theory, 5 strata, explicit non-revision contract (DR-0..DR-4 / N-1..N-5 / W-1..W-4 unchanged) | #19 |
+
+**DR-3 (substrate-agnosticism) is preserved as a universal quantifier** : BioFieldWML and the biophysical stratification spec are empirical scaffolding, not axiom revisions.
+
+> **Critic-saver** — The mandatory internal critic review (per `feedback_critic_before_ship.md`) caught one MAJOR finding before the PR #15 merge : a missing bidirectional cross-reference between PR #15 (`BioFieldWML` plan) and PR #19 (stratification spec). Fixed in-session before merge.
+
+**Open follow-up issues created** :
+- `nerve-wml#16` — `friston2025pivot` bibliographic metadata to complete pre-submission.
+- `dream-of-kiki#20` — `paper1-fr/` EN→FR sync of PR #18 changes.
+
+**Three Open Question defaults** documented in PR bodies (reviewable) :
+- OQ-1 (DR-0 boundary) : `BioFieldWML.step()` performs ONE synchronous Up-Down cycle per call.
+- OQ-2 (STDP scope) : STDP triplet scoped to `BioFieldWML` exclusively ; surrogate-gradient YAGNI bounded, not revoked.
+- OQ-3 (stratification spec scope) : Paper 2 appendix scaffolding by default.
 
 ---
 
